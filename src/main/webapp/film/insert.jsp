@@ -61,7 +61,7 @@
 								
 								<div class="col-md-6">
 									<label for="regista.id">Regista</label>
-								    <select class="form-control" id="regista.id" name="regista.id">
+								    <select class="form-select" id="regista.id" name="regista.id">
 								    	<option value="" selected> -- Selezionare una voce -- </option>
 								      	<c:forEach items="${registi_list_attribute }" var="registaItem">
 								      		<option value="${registaItem.id}" ${insert_film_attr.regista.id == registaItem.id?'selected':''} >${registaItem.nome } ${registaItem.cognome }</option>
