@@ -36,31 +36,31 @@
 							
 								<div class="col-md-6">
 									<label>Nome <span class="text-danger">*</span></label>
-									<input type="text" name="nome" id="nome" class="form-control" placeholder="Inserire il nome" value="${insert_regista_attr.nome }" >
+									<input type="text" name="nome" id="nome" class="form-control" placeholder="Inserire il nome"  >
 								</div>
 								
 								<div class="col-md-6">
 									<label>Cognome <span class="text-danger">*</span></label>
-									<input type="text" name="cognome" id="cognome" class="form-control" placeholder="Inserire il cognome" value="${insert_regista_attr.cognome }" >
+									<input type="text" name="cognome" id="cognome" class="form-control" placeholder="Inserire il cognome"  >
 								</div>
 							
 								<div class="col-md-6">
 									<label>Nickname <span class="text-danger">*</span></label>
-									<input type="text" class="form-control" name="nickName" id="nickName" placeholder="Inserire il nickname" value="${insert_regista_attr.nickName }" >
+									<input type="text" class="form-control" name="nickName" id="nickName" placeholder="Inserire il nickname"  >
 								</div>
 								
 								<div class="col-md-3">
 									<label>Data di Nascita <span class="text-danger">*</span></label>
                         			<input class="form-control" id="dataDiNascita" type="date" placeholder="dd/MM/yy"
-                            			title="formato : gg/mm/aaaa"  name="dataDiNascita"  value="${parsedDate}" >
+                            			title="formato : gg/mm/aaaa"  name="dataDiNascita"   >
 								</div>
 								
 								<div class="col-md-3">
 									<label for="sesso">Sesso <span class="text-danger">*</span></label>
 								    <select class="form-select" id="sesso" name="sesso" >
 								    	<option value="" selected> - Selezionare - </option>
-								      	<option value="MASCHIO" ${insert_regista_attr.sesso == 'MASCHIO'?'selected':''} >M</option>
-								      	<option value="FEMMINA" ${insert_regista_attr.sesso == 'FEMMINA'?'selected':''} >F</option>
+								      	<option value="MASCHIO" >M</option>
+								      	<option value="FEMMINA"  >F</option>
 								    </select>
 								</div>
 								
