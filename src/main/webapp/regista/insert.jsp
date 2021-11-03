@@ -44,29 +44,29 @@
 							
 							
 								<div class="col-md-6">
-									<label>Nome <span class="text-danger">*</span></label>
+									<label for="nome" class="form-label">Nome <span class="text-danger">*</span></label>
 									<input type="text" name="nome" id="nome" class="form-control" placeholder="Inserire il nome" value="${insert_regista_attr.nome }" required>
 								</div>
 								
 								<div class="col-md-6">
-									<label>Cognome <span class="text-danger">*</span></label>
+									<label for="cognome" class="form-label">Cognome <span class="text-danger">*</span></label>
 									<input type="text" name="cognome" id="cognome" class="form-control" placeholder="Inserire il cognome" value="${insert_regista_attr.cognome }" required>
 								</div>
 							
 								<div class="col-md-6">
-									<label>Nickname <span class="text-danger">*</span></label>
+									<label for="nickName" class="form-label">Nickname <span class="text-danger">*</span></label>
 									<input type="text" class="form-control" name="nickName" id="nickName" placeholder="Inserire il nickname" value="${insert_regista_attr.nickName }" required>
 								</div>
 								
 								<fmt:formatDate pattern='yyyy-MM-dd' var="parsedDate" type='date' value='${insert_regista_attr.dataDiNascita}' />
 								<div class="col-md-3">
-									<label>Data di Nascita <span class="text-danger">*</span></label>
+									<label for="dataDiNascita" class="form-label">Data di Nascita <span class="text-danger">*</span></label>
                         			<input class="form-control" id="dataDiNascita" type="date" placeholder="dd/MM/yy"
                             			title="formato : gg/mm/aaaa"  name="dataDiNascita" required value="${parsedDate}" >
 								</div>
 								
 								<div class="col-md-3">
-									<label for="sesso">Sesso <span class="text-danger">*</span></label>
+									<label for="sesso" class="form-label">Sesso <span class="text-danger">*</span></label>
 								    <select class="form-select" id="sesso" name="sesso" required>
 								    	<option value="" selected> - Selezionare - </option>
 								      	<option value="MASCHIO" ${insert_regista_attr.sesso == 'MASCHIO'?'selected':''} >M</option>

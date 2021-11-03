@@ -37,24 +37,24 @@
 							
 							
 								<div class="col-md-6">
-									<label>Titolo</label>
+									<label for="titolo" class="form-label">Titolo</label>
 									<input type="text" name="titolo" id="titolo" class="form-control" placeholder="Inserire il titolo" value="${insert_film_attr.titolo }">
 								</div>
 								
 								<div class="col-md-6">
-									<label>Genere</label>
+									<label for="genere" class="form-label">Genere</label>
 									<input type="text" name="genere" id="genere" class="form-control" placeholder="Inserire il genere" value="${insert_film_attr.genere }">
 								</div>
 							
 								<fmt:formatDate pattern='yyyy-MM-dd' var="parsedDate" type='date' value='${insert_film_attr.dataPubblicazione}' />
 								<div class="col-md-6">
-									<label>Data di Pubblicazione</label>
+									<label for="dataPubblicazione" class="form-label">Data di Pubblicazione</label>
 	                        		<input class="form-control" id="dataPubblicazione" type="date" placeholder="dd/MM/yy" 
 	                        				title="formato : gg/mm/aaaa"  name="dataPubblicazione" value="${parsedDate}" >
 								</div>
 								
 								<div class="col-md-6">
-									<label>Durata (minuti)</label>
+									<label for="minutiDurata" class="form-label">Durata (minuti)</label>
 									<input type="number" class="form-control" name="minutiDurata" id="minutiDurata" placeholder="Inserire la durata" value="${insert_film_attr.minutiDurata }">
 								</div>
 								
