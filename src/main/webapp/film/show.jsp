@@ -77,11 +77,11 @@
 							   	</dl>
 							    
 							  </div>
-							</div>
 							<!-- end info Regista -->
+							</div>
 					    	
-					    </div>
 					    <!-- end card body -->
+					    </div>
 					    
 					    <div class='card-footer'>
 					        <a href="ExecuteListFilmServlet" class='btn btn-outline-secondary' style='width:80px'>
