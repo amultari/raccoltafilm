@@ -100,12 +100,6 @@ public class FilmServiceImpl implements FilmService {
 	}
 
 	@Override
-	public void rimuovi(Film filmInstance) throws Exception {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public void rimuovi(Long idFilmToRemove) throws Exception {
 		EntityManager entityManager = LocalEntityManagerFactoryListener.getEntityManager();
 

@@ -81,7 +81,7 @@ public class RegistaServiceImpl implements RegistaService {
 	}
 
 	@Override
-	public void rimuovi(Regista registaInstance) throws Exception {
+	public void rimuovi(Long idRegista) throws Exception {
 		// TODO Auto-generated method stub
 
 	}
