@@ -58,7 +58,7 @@ public class UtenteDAOImpl implements UtenteDAO {
 
 	// questo metodo ci torna utile per capire se possiamo rimuovere un ruolo non
 	// essendo collegato ad un utente
-	public List<Utente> findAllByRuolo(Ruolo ruoloInput) {
+	public List<Utente> findAllByRuolo(Ruolo ruoloInput) throws Exception {
 		TypedQuery<Utente> query = entityManager.createQuery("select u FROM Utente u join u.ruoli r where r = :ruolo",
 				Utente.class);
 		query.setParameter("ruolo", ruoloInput);
@@ -66,7 +66,7 @@ public class UtenteDAOImpl implements UtenteDAO {
 	}
 
 	@Override
-	public Optional<Utente> findByUsernameAndPassword(String username, String password) {
+	public Optional<Utente> findByUsernameAndPassword(String username, String password) throws Exception {
 		TypedQuery<Utente> query = entityManager.createQuery(
 				"select u FROM Utente u  " + "where u.username = :username and u.password=:password ", Utente.class);
 		query.setParameter("username", username);
@@ -75,7 +75,7 @@ public class UtenteDAOImpl implements UtenteDAO {
 	}
 
 	@Override
-	public Optional<Utente> login(String username, String password) {
+	public Optional<Utente> login(String username, String password) throws Exception {
 		TypedQuery<Utente> query = entityManager.createQuery(
 				"select u FROM Utente u join fetch u.ruoli r "
 						+ "where u.username = :username and u.password=:password and u.stato=:statoUtente",
