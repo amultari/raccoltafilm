@@ -76,7 +76,7 @@
 								
 								
 							<div class="col-12">
-								<button type="submit" name="submit" value="submit" id="submit" class="btn btn-primary">Conferma</button>
+								<button type="submit" name="insertSubmit" value="insertSubmit" id="insertSubmit" class="btn btn-primary">Conferma</button>
 							</div>
 		
 						</form>
