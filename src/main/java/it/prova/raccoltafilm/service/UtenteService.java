@@ -16,7 +16,7 @@ public interface UtenteService  {
 
 	public void inserisciNuovo(Utente utenteInstance) throws Exception;
 
-	public void rimuovi(Utente utenteInstance) throws Exception;
+	public void rimuovi(Long idUtenteToRemove) throws Exception;
 	
 	public void aggiungiRuolo(Utente utenteEsistente, Ruolo ruoloInstance) throws Exception;
 	

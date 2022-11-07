@@ -16,7 +16,6 @@ public interface FilmService {
 
 	public void inserisciNuovo(Film filmInstance) throws Exception;
 
-	//novità rispetto al passato: rimuoviamo per id così faccio tutto nel service e risparimio 
 	public void rimuovi(Long idFilmToRemove) throws Exception;
 
 	public List<Film> findByExample(Film example) throws Exception;

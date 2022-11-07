@@ -111,7 +111,7 @@ public class UtenteServiceImpl implements UtenteService {
 	}
 
 	@Override
-	public void rimuovi(Utente utenteInstance) throws Exception {
+	public void rimuovi(Long idUtenteToRemove) throws Exception {
 		// TODO Auto-generated method stub
 
 	}
