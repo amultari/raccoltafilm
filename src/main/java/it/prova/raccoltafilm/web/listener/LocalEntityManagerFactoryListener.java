@@ -66,12 +66,12 @@ public class LocalEntityManagerFactoryListener implements ServletContextListener
 		RuoloService ruoloServiceInstance = MyServiceFactory.getRuoloServiceInstance();
 		UtenteService utenteServiceInstance = MyServiceFactory.getUtenteServiceInstance();
 
-		if (ruoloServiceInstance.cercaPerDescrizioneECodice("Administrator", "ROLE_ADMIN") == null) {
-			ruoloServiceInstance.inserisciNuovo(new Ruolo("Administrator", "ROLE_ADMIN"));
+		if (ruoloServiceInstance.cercaPerDescrizioneECodice("Administrator", Ruolo.ROLE_ADMIN) == null) {
+			ruoloServiceInstance.inserisciNuovo(new Ruolo("Administrator", Ruolo.ROLE_ADMIN));
 		}
 
-		if (ruoloServiceInstance.cercaPerDescrizioneECodice("Classic User", "ROLE_CLASSIC_USER") == null) {
-			ruoloServiceInstance.inserisciNuovo(new Ruolo("Classic User", "ROLE_CLASSIC_USER"));
+		if (ruoloServiceInstance.cercaPerDescrizioneECodice("Classic User", Ruolo.ROLE_CLASSIC_USER) == null) {
+			ruoloServiceInstance.inserisciNuovo(new Ruolo("Classic User", Ruolo.ROLE_CLASSIC_USER));
 		}
 
 		if (utenteServiceInstance.findByUsernameAndPassword("admin", "admin") == null) {
@@ -79,7 +79,15 @@ public class LocalEntityManagerFactoryListener implements ServletContextListener
 			admin.setStato(StatoUtente.ATTIVO);
 			utenteServiceInstance.inserisciNuovo(admin);
 			utenteServiceInstance.aggiungiRuolo(admin,
-					ruoloServiceInstance.cercaPerDescrizioneECodice("Administrator", "ROLE_ADMIN"));
+					ruoloServiceInstance.cercaPerDescrizioneECodice("Administrator", Ruolo.ROLE_ADMIN));
+		}
+
+		if (utenteServiceInstance.findByUsernameAndPassword("user", "user") == null) {
+			Utente user = new Utente("user", "user", "Pippo", "Bianchi", new Date());
+			user.setStato(StatoUtente.ATTIVO);
+			utenteServiceInstance.inserisciNuovo(user);
+			utenteServiceInstance.aggiungiRuolo(user,
+					ruoloServiceInstance.cercaPerDescrizioneECodice("Classic User", Ruolo.ROLE_CLASSIC_USER));
 		}
 	}
 
