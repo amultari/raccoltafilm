@@ -9,12 +9,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import it.prova.raccoltafilm.model.Film;
+import it.prova.raccoltafilm.service.FilmService;
 import it.prova.raccoltafilm.service.MyServiceFactory;
+import it.prova.raccoltafilm.service.RegistaService;
 import it.prova.raccoltafilm.utility.UtilityForm;
 
 @WebServlet("/ExecuteInsertFilmServlet")
 public class ExecuteInsertFilmServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
+	// injection del Service
+	private FilmService filmService;
+	private RegistaService registaService;
+
+	public ExecuteInsertFilmServlet() {
+		this.filmService = MyServiceFactory.getFilmServiceInstance();
+		this.registaService = MyServiceFactory.getRegistaServiceInstance();
+	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -35,8 +46,7 @@ public class ExecuteInsertFilmServlet extends HttpServlet {
 			if (!UtilityForm.validateFilmBean(filmInstance)) {
 				request.setAttribute("insert_film_attr", filmInstance);
 				// questo mi serve per la select di registi in pagina
-				request.setAttribute("registi_list_attribute",
-						MyServiceFactory.getRegistaServiceInstance().listAllElements());
+				request.setAttribute("registi_list_attribute", registaService.listAllElements());
 				request.setAttribute("errorMessage", "Attenzione sono presenti errori di validazione");
 				request.getRequestDispatcher("/film/insert.jsp").forward(request, response);
 				return;
@@ -44,7 +54,7 @@ public class ExecuteInsertFilmServlet extends HttpServlet {
 
 			// se sono qui i valori sono ok quindi posso creare l'oggetto da inserire
 			// occupiamoci delle operazioni di business
-			MyServiceFactory.getFilmServiceInstance().inserisciNuovo(filmInstance);
+			filmService.inserisciNuovo(filmInstance);
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("errorMessage", "Attenzione si è verificato un errore.");

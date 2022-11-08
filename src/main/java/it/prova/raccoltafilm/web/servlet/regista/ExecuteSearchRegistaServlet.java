@@ -13,11 +13,18 @@ import org.apache.commons.lang3.StringUtils;
 import it.prova.raccoltafilm.model.Regista;
 import it.prova.raccoltafilm.model.Sesso;
 import it.prova.raccoltafilm.service.MyServiceFactory;
+import it.prova.raccoltafilm.service.RegistaService;
 import it.prova.raccoltafilm.utility.UtilityForm;
 
 @WebServlet("/ExecuteSearchRegistaServlet")
 public class ExecuteSearchRegistaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
+	private RegistaService registaService;
+
+	public ExecuteSearchRegistaServlet() {
+		this.registaService = MyServiceFactory.getRegistaServiceInstance();
+	}
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -33,8 +40,7 @@ public class ExecuteSearchRegistaServlet extends HttpServlet {
 				UtilityForm.parseDateArrivoFromString(dataDiNascitaParam), sessoParsed);
 
 		try {
-			request.setAttribute("registi_list_attribute",
-					MyServiceFactory.getRegistaServiceInstance().findByExample(example));
+			request.setAttribute("registi_list_attribute", registaService.findByExample(example));
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("errorMessage", "Attenzione si è verificato un errore.");

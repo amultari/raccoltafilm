@@ -10,18 +10,26 @@ import javax.servlet.http.HttpServletResponse;
 
 import it.prova.raccoltafilm.model.Film;
 import it.prova.raccoltafilm.service.MyServiceFactory;
+import it.prova.raccoltafilm.service.RegistaService;
 
 @WebServlet("/PrepareInsertFilmServlet")
 public class PrepareInsertFilmServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	// injection del Service
+	private RegistaService registaService;
+
+	public PrepareInsertFilmServlet() {
+		this.registaService = MyServiceFactory.getRegistaServiceInstance();
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		try {
-			//metto un bean 'vuoto' in request perché per la pagina risulta necessario
+			// metto un bean 'vuoto' in request perché per la pagina risulta necessario
 			request.setAttribute("insert_film_attr", new Film());
 			// questo mi serve per la select di registi in pagina
-			request.setAttribute("registi_list_attribute",
-					MyServiceFactory.getRegistaServiceInstance().listAllElements());
+			request.setAttribute("registi_list_attribute", registaService.listAllElements());
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("errorMessage", "Attenzione si è verificato un errore.");

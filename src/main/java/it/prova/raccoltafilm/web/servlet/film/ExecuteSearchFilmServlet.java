@@ -9,20 +9,28 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import it.prova.raccoltafilm.model.Film;
+import it.prova.raccoltafilm.service.FilmService;
 import it.prova.raccoltafilm.service.MyServiceFactory;
 
 @WebServlet("/ExecuteSearchFilmServlet")
 public class ExecuteSearchFilmServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		//da implementare
+
+	// injection del Service
+	private FilmService filmService;
+
+	public ExecuteSearchFilmServlet() {
+		this.filmService = MyServiceFactory.getFilmServiceInstance();
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		// da implementare
 		Film example = new Film();
-		
+
 		try {
-			request.setAttribute("film_list_attribute",
-					MyServiceFactory.getFilmServiceInstance().findByExample(example));
+			request.setAttribute("film_list_attribute", filmService.findByExample(example));
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("errorMessage", "Attenzione si è verificato un errore.");
@@ -31,6 +39,5 @@ public class ExecuteSearchFilmServlet extends HttpServlet {
 		}
 		request.getRequestDispatcher("/film/list.jsp").forward(request, response);
 	}
-
 
 }

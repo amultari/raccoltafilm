@@ -10,11 +10,19 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
 
+import it.prova.raccoltafilm.service.FilmService;
 import it.prova.raccoltafilm.service.MyServiceFactory;
 
 @WebServlet("/ExecuteListFilmServlet")
 public class ExecuteListFilmServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
+	// injection del Service
+	private FilmService filmService;
+
+	public ExecuteListFilmServlet() {
+		this.filmService = MyServiceFactory.getFilmServiceInstance();
+	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -29,7 +37,7 @@ public class ExecuteListFilmServlet extends HttpServlet {
 			if (StringUtils.isNotBlank(operationResult) && operationResult.equalsIgnoreCase("NOT_FOUND"))
 				request.setAttribute("errorMessage", "Elemento non trovato.");
 
-			request.setAttribute("film_list_attribute", MyServiceFactory.getFilmServiceInstance().listAllElements());
+			request.setAttribute("film_list_attribute", filmService.listAllElements());
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("errorMessage", "Attenzione si è verificato un errore.");

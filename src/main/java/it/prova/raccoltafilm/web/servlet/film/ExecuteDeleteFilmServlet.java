@@ -11,11 +11,19 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.lang3.math.NumberUtils;
 
 import it.prova.raccoltafilm.exceptions.ElementNotFoundException;
+import it.prova.raccoltafilm.service.FilmService;
 import it.prova.raccoltafilm.service.MyServiceFactory;
 
 @WebServlet("/ExecuteDeleteFilmServlet")
 public class ExecuteDeleteFilmServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
+	//injection del Service
+	private FilmService filmService;
+
+	public ExecuteDeleteFilmServlet() {
+		this.filmService = MyServiceFactory.getFilmServiceInstance();
+	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -33,7 +41,7 @@ public class ExecuteDeleteFilmServlet extends HttpServlet {
 			// in questo modo spostiamo la logica di caricamento/rimozione nel service
 			// usando la stessa finestra di transazione e non aprendo e chiudendo due volte
 			// inoltre mi torna utile quando devo fare rimozioni eager
-			MyServiceFactory.getFilmServiceInstance().rimuovi(Long.parseLong(idFilmParam));
+			filmService.rimuovi(Long.parseLong(idFilmParam));
 		} catch (ElementNotFoundException e) {
 			request.getRequestDispatcher("ExecuteListFilmServlet?operationResult=NOT_FOUND").forward(request, response);
 			return;

@@ -10,11 +10,18 @@ import javax.servlet.http.HttpServletResponse;
 
 import it.prova.raccoltafilm.model.Regista;
 import it.prova.raccoltafilm.service.MyServiceFactory;
+import it.prova.raccoltafilm.service.RegistaService;
 import it.prova.raccoltafilm.utility.UtilityForm;
 
 @WebServlet("/ExecuteInsertRegistaServlet")
 public class ExecuteInsertRegistaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
+	private RegistaService registaService;
+
+	public ExecuteInsertRegistaServlet() {
+		this.registaService = MyServiceFactory.getRegistaServiceInstance();
+	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -41,7 +48,7 @@ public class ExecuteInsertRegistaServlet extends HttpServlet {
 		// se sono qui i valori sono ok quindi posso creare l'oggetto da inserire
 		// occupiamoci delle operazioni di business
 		try {
-			MyServiceFactory.getRegistaServiceInstance().inserisciNuovo(registaInstance);
+			registaService.inserisciNuovo(registaInstance);
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("errorMessage", "Attenzione si è verificato un errore.");

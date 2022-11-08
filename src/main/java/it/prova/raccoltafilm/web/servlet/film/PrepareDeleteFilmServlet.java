@@ -11,11 +11,19 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.lang3.math.NumberUtils;
 
 import it.prova.raccoltafilm.model.Film;
+import it.prova.raccoltafilm.service.FilmService;
 import it.prova.raccoltafilm.service.MyServiceFactory;
 
 @WebServlet("/PrepareDeleteFilmServlet")
 public class PrepareDeleteFilmServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
+	// injection del Service
+	private FilmService filmService;
+
+	public PrepareDeleteFilmServlet() {
+		this.filmService = MyServiceFactory.getFilmServiceInstance();
+	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -29,8 +37,7 @@ public class PrepareDeleteFilmServlet extends HttpServlet {
 		}
 
 		try {
-			Film filmInstance = MyServiceFactory.getFilmServiceInstance()
-					.caricaSingoloElementoEager(Long.parseLong(idFilmParam));
+			Film filmInstance = filmService.caricaSingoloElementoEager(Long.parseLong(idFilmParam));
 
 			if (filmInstance == null) {
 				request.setAttribute("errorMessage", "Elemento non trovato.");

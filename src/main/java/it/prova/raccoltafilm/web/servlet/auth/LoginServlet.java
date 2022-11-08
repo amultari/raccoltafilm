@@ -12,10 +12,18 @@ import org.apache.commons.lang3.StringUtils;
 
 import it.prova.raccoltafilm.model.Utente;
 import it.prova.raccoltafilm.service.MyServiceFactory;
+import it.prova.raccoltafilm.service.UtenteService;
 
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	// injection del Service
+	private UtenteService utenteService;
+	
+	public LoginServlet() {
+		this.utenteService = MyServiceFactory.getUtenteServiceInstance();
+	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -36,7 +44,7 @@ public class LoginServlet extends HttpServlet {
 		String destinazione = null;
 
 		try {
-			Utente utenteInstance = MyServiceFactory.getUtenteServiceInstance().accedi(loginInput, passwordInput);
+			Utente utenteInstance = utenteService.accedi(loginInput, passwordInput);
 			if (utenteInstance == null) {
 				request.setAttribute("errorMessage", "Utente non trovato.");
 				destinazione = "login.jsp";
