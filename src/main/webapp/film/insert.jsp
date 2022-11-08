@@ -37,30 +37,30 @@
 							
 							
 								<div class="col-md-6">
-									<label for="titolo" class="form-label">Titolo</label>
+									<label for="titolo" class="form-label">Titolo <span class="text-danger">*</span></label>
 									<input type="text" name="titolo" id="titolo" class="form-control" placeholder="Inserire il titolo" value="${insert_film_attr.titolo }">
 								</div>
 								
 								<div class="col-md-6">
-									<label for="genere" class="form-label">Genere</label>
+									<label for="genere" class="form-label">Genere <span class="text-danger">*</span></label>
 									<input type="text" name="genere" id="genere" class="form-control" placeholder="Inserire il genere" value="${insert_film_attr.genere }">
 								</div>
 							
 								<fmt:formatDate pattern='yyyy-MM-dd' var="parsedDate" type='date' value='${insert_film_attr.dataPubblicazione}' />
 								<div class="col-md-6">
-									<label for="dataPubblicazione" class="form-label">Data di Pubblicazione</label>
+									<label for="dataPubblicazione" class="form-label">Data di Pubblicazione <span class="text-danger">*</span></label>
 	                        		<input class="form-control" id="dataPubblicazione" type="date" placeholder="dd/MM/yy" 
 	                        				title="formato : gg/mm/aaaa"  name="dataPubblicazione" value="${parsedDate}" >
 								</div>
 								
 								<div class="col-md-6">
-									<label for="minutiDurata" class="form-label">Durata (minuti)</label>
+									<label for="minutiDurata" class="form-label">Durata (minuti) <span class="text-danger">*</span></label>
 									<input type="number" class="form-control" name="minutiDurata" id="minutiDurata" placeholder="Inserire la durata" value="${insert_film_attr.minutiDurata }">
 								</div>
 								
 								
 								<div class="col-md-6">
-									<label for="regista.id">Regista</label>
+									<label for="regista.id">Regista <span class="text-danger">*</span></label>
 								    <select class="form-select" id="regista.id" name="regista.id">
 								    	<option value="" selected> -- Selezionare una voce -- </option>
 								      	<c:forEach items="${registi_list_attribute }" var="registaItem">

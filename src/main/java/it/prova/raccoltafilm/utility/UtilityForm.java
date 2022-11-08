@@ -54,6 +54,7 @@ public class UtilityForm {
 				|| StringUtils.isBlank(filmToBeValidated.getGenere())
 				|| filmToBeValidated.getMinutiDurata() == null 
 				|| filmToBeValidated.getMinutiDurata() < 1
+				|| filmToBeValidated.getDataPubblicazione() == null
 				|| filmToBeValidated.getRegista() == null
 				|| filmToBeValidated.getRegista().getId() == null 
 				|| filmToBeValidated.getRegista().getId() < 1) {
