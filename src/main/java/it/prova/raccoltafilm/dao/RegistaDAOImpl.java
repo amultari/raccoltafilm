@@ -29,8 +29,8 @@ public class RegistaDAOImpl implements RegistaDAO {
 
 	@Override
 	public Optional<Regista> findOne(Long id) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		Regista result = entityManager.find(Regista.class, id);
+		return result != null ? Optional.of(result) : Optional.empty();
 	}
 
 	@Override
@@ -81,8 +81,8 @@ public class RegistaDAOImpl implements RegistaDAO {
 			whereClauses.add("r.dataDiNascita >= :dataDiNascita ");
 			paramaterMap.put("dataDiNascita", example.getDataDiNascita());
 		}
-		
-		queryBuilder.append(!whereClauses.isEmpty()?" and ":"");
+
+		queryBuilder.append(!whereClauses.isEmpty() ? " and " : "");
 		queryBuilder.append(StringUtils.join(whereClauses, " and "));
 		TypedQuery<Regista> typedQuery = entityManager.createQuery(queryBuilder.toString(), Regista.class);
 

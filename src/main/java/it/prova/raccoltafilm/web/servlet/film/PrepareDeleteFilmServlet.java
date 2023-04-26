@@ -40,9 +40,7 @@ public class PrepareDeleteFilmServlet extends HttpServlet {
 			Film filmInstance = filmService.caricaSingoloElementoEager(Long.parseLong(idFilmParam));
 
 			if (filmInstance == null) {
-				request.setAttribute("errorMessage", "Elemento non trovato.");
-				request.getRequestDispatcher("ExecuteListFilmServlet?operationResult=NOT_FOUND").forward(request,
-						response);
+				response.sendRedirect("ExecuteListFilmServlet?operationResult=NOT_FOUND");
 				return;
 			}
 

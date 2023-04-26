@@ -18,7 +18,7 @@ import it.prova.raccoltafilm.service.MyServiceFactory;
 public class ExecuteDeleteFilmServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	//injection del Service
+	// injection del Service
 	private FilmService filmService;
 
 	public ExecuteDeleteFilmServlet() {
@@ -31,8 +31,7 @@ public class ExecuteDeleteFilmServlet extends HttpServlet {
 
 		if (!NumberUtils.isCreatable(idFilmParam)) {
 			// qui ci andrebbe un messaggio nei file di log costruito ad hoc se fosse attivo
-			request.setAttribute("errorMessage", "Attenzione si è verificato un errore.");
-			request.getRequestDispatcher("home").forward(request, response);
+			response.sendRedirect(request.getContextPath() + "/home?operationResult=ERROR");
 			return;
 		}
 
@@ -43,13 +42,12 @@ public class ExecuteDeleteFilmServlet extends HttpServlet {
 			// inoltre mi torna utile quando devo fare rimozioni eager
 			filmService.rimuovi(Long.parseLong(idFilmParam));
 		} catch (ElementNotFoundException e) {
-			request.getRequestDispatcher("ExecuteListFilmServlet?operationResult=NOT_FOUND").forward(request, response);
+			response.sendRedirect(request.getContextPath() + "/ExecuteListFilmServlet?operationResult=NOT_FOUND");
 			return;
 		} catch (Exception e) {
 			// qui ci andrebbe un messaggio nei file di log costruito ad hoc se fosse attivo
 			e.printStackTrace();
-			request.setAttribute("errorMessage", "Attenzione si è verificato un errore.");
-			request.getRequestDispatcher("home").forward(request, response);
+			response.sendRedirect(request.getContextPath() + "/home?operationResult=ERROR");
 			return;
 		}
 
