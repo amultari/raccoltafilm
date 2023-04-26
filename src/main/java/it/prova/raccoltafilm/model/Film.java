@@ -1,6 +1,6 @@
 package it.prova.raccoltafilm.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,7 +25,7 @@ public class Film {
 	@Column(name = "genere")
 	private String genere;
 	@Column(name = "dataPubblicazione")
-	private Date dataPubblicazione;
+	private LocalDate dataPubblicazione;
 	@Column(name = "minutiDurata")
 	private Integer minutiDurata;
 
@@ -36,7 +36,7 @@ public class Film {
 	public Film() {
 	}
 
-	public Film(String titolo, String genere, Date dataPubblicazione, Integer minutiDurata, Regista regista) {
+	public Film(String titolo, String genere, LocalDate dataPubblicazione, Integer minutiDurata, Regista regista) {
 		this.titolo = titolo;
 		this.genere = genere;
 		this.dataPubblicazione = dataPubblicazione;
@@ -73,11 +73,11 @@ public class Film {
 		this.genere = genere;
 	}
 
-	public Date getDataPubblicazione() {
+	public LocalDate getDataPubblicazione() {
 		return dataPubblicazione;
 	}
 
-	public void setDataPubblicazione(Date dataPubblicazione) {
+	public void setDataPubblicazione(LocalDate dataPubblicazione) {
 		this.dataPubblicazione = dataPubblicazione;
 	}
 

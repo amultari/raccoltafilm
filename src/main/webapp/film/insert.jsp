@@ -46,7 +46,8 @@
 									<input type="text" name="genere" id="genere" class="form-control" placeholder="Inserire il genere" value="${insert_film_attr.genere }">
 								</div>
 							
-								<fmt:formatDate pattern='yyyy-MM-dd' var="parsedDate" type='date' value='${insert_film_attr.dataPubblicazione}' />
+								<fmt:parseDate value="${insert_film_attr.dataPubblicazione}" pattern="yyyy-MM-dd" var="localDateToBeParsed" type="date"/>
+								<fmt:formatDate pattern="yyyy-MM-dd" value="${localDateToBeParsed}" var="parsedDate"/>
 								<div class="col-md-6">
 									<label for="dataPubblicazione" class="form-label">Data di Pubblicazione <span class="text-danger">*</span></label>
 	                        		<input class="form-control" id="dataPubblicazione" type="date" placeholder="dd/MM/yy" 

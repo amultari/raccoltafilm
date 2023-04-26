@@ -1,6 +1,6 @@
 package it.prova.raccoltafilm.web.listener;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -75,7 +75,7 @@ public class LocalEntityManagerFactoryListener implements ServletContextListener
 		}
 
 		if (utenteServiceInstance.findByUsernameAndPassword("admin", "admin") == null) {
-			Utente admin = new Utente("admin", "admin", "Mario", "Rossi", new Date());
+			Utente admin = new Utente("admin", "admin", "Mario", "Rossi", LocalDate.now());
 			admin.setStato(StatoUtente.ATTIVO);
 			utenteServiceInstance.inserisciNuovo(admin);
 			utenteServiceInstance.aggiungiRuolo(admin,
@@ -83,7 +83,7 @@ public class LocalEntityManagerFactoryListener implements ServletContextListener
 		}
 
 		if (utenteServiceInstance.findByUsernameAndPassword("user", "user") == null) {
-			Utente user = new Utente("user", "user", "Pippo", "Bianchi", new Date());
+			Utente user = new Utente("user", "user", "Pippo", "Bianchi",LocalDate.now());
 			user.setStato(StatoUtente.ATTIVO);
 			utenteServiceInstance.inserisciNuovo(user);
 			utenteServiceInstance.aggiungiRuolo(user,

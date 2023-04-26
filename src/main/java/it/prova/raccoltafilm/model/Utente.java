@@ -1,6 +1,6 @@
 package it.prova.raccoltafilm.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -33,7 +33,7 @@ public class Utente {
 	@Column(name = "cognome")
 	private String cognome;
 	@Column(name = "dateCreated")
-	private Date dateCreated;
+	private LocalDate dateCreated;
 
 	// se non uso questa annotation viene gestito come un intero
 	@Enumerated(EnumType.STRING)
@@ -52,14 +52,14 @@ public class Utente {
 		this.password = password;
 	}
 
-	public Utente(String username, String password, String nome, String cognome, Date dateCreated) {
+	public Utente(String username, String password, String nome, String cognome, LocalDate dateCreated) {
 		this.username = username;
 		this.password = password;
 		this.nome = nome;
 		this.cognome = cognome;
 		this.dateCreated = dateCreated;
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -108,11 +108,11 @@ public class Utente {
 		this.cognome = cognome;
 	}
 
-	public Date getDateCreated() {
+	public LocalDate getDateCreated() {
 		return dateCreated;
 	}
 
-	public void setDateCreated(Date dateCreated) {
+	public void setDateCreated(LocalDate dateCreated) {
 		this.dateCreated = dateCreated;
 	}
 

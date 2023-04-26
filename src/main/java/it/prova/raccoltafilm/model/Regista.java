@@ -1,6 +1,6 @@
 package it.prova.raccoltafilm.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -30,7 +30,7 @@ public class Regista {
 	@Column(name = "nickName")
 	private String nickName;
 	@Column(name = "dataDiNascita")
-	private Date dataDiNascita;
+	private LocalDate dataDiNascita;
 
 	// se non uso questa annotation viene gestito come un intero
 	@Column(name = "sesso")
@@ -43,21 +43,21 @@ public class Regista {
 	public Regista() {
 	}
 
-	public Regista(String nome, String cognome, String nickName, Date dataDiNascita, Sesso sesso) {
+	public Regista(String nome, String cognome, String nickName, LocalDate dataDiNascita, Sesso sesso) {
 		this.nome = nome;
 		this.cognome = cognome;
 		this.nickName = nickName;
 		this.dataDiNascita = dataDiNascita;
 		this.sesso = sesso;
 	}
-	
+
 	public Regista(String nome, String cognome, String nickName, Sesso sesso) {
 		this.nome = nome;
 		this.cognome = cognome;
 		this.nickName = nickName;
 		this.sesso = sesso;
 	}
-	
+
 	public Regista(String nome, String cognome, String nickName) {
 		this.nome = nome;
 		this.cognome = cognome;
@@ -100,11 +100,11 @@ public class Regista {
 		this.nickName = nickName;
 	}
 
-	public Date getDataDiNascita() {
+	public LocalDate getDataDiNascita() {
 		return dataDiNascita;
 	}
 
-	public void setDataDiNascita(Date dataDiNascita) {
+	public void setDataDiNascita(LocalDate dataDiNascita) {
 		this.dataDiNascita = dataDiNascita;
 	}
 

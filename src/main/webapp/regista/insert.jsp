@@ -58,7 +58,8 @@
 									<input type="text" class="form-control" name="nickName" id="nickName" placeholder="Inserire il nickname" value="${insert_regista_attr.nickName }" required>
 								</div>
 								
-								<fmt:formatDate pattern='yyyy-MM-dd' var="parsedDate" type='date' value='${insert_regista_attr.dataDiNascita}' />
+								<fmt:parseDate value="${insert_regista_attr.dataDiNascita}" pattern="yyyy-MM-dd" var="localDateToBeParsed" type="date"/>
+								<fmt:formatDate pattern="yyyy-MM-dd" value="${localDateToBeParsed}" var="parsedDate"/>
 								<div class="col-md-3">
 									<label for="dataDiNascita" class="form-label">Data di Nascita <span class="text-danger">*</span></label>
                         			<input class="form-control" id="dataDiNascita" type="date" placeholder="dd/MM/yy"
